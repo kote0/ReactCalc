@@ -11,49 +11,73 @@ namespace ReactCalc
     {
         static void Main(string[] args)
         {
-            int x = 0;
-            int y = 0;
+            double x = 0;
+            double y = 0;
+            string action = "";
             var calc = new Calc();
 
+            #region Инструкция
             Console.WriteLine("Hello, i'm Калькулятор");
+            Console.WriteLine("Инструкция:");
+            Console.WriteLine("'/' - деление");
+            Console.WriteLine("'*' - умножение");
+            Console.WriteLine("'-' - вычитание");
+            Console.WriteLine("'+' - сумма");
+            Console.WriteLine("'sqrt' - квадратный корень");
+            #endregion
 
-            if (args.Length == 2)
+
+            if (args.Length >= 2)
             {
-                x = ToInt(args[0], 83);
-                y = ToInt(args[1], 70);
+                action = args[0];
+                x = ToDouble(args[1]);
+                if (args.Length == 3)
+                {
+                    y = ToDouble(args[2]);
+                }
+                else
+                {
+                    y = ToDouble(args[1]);
+                }
             }
             else
             {
                 #region Ввод данных
 
+                Console.WriteLine("Введите действие");
+                action = Console.ReadLine();
+
                 Console.WriteLine("Введите Х");
                 var strx = Console.ReadLine();
-                x = ToInt(strx);
-
-                Console.WriteLine("Введите Y");
-                var stry = Console.ReadLine();
-                y = ToInt(stry, 99);
+                x = ToDouble(strx);
+                if (action != "sqrt")
+                {
+                    Console.WriteLine("Введите Y");
+                    var stry = Console.ReadLine();
+                    y = ToDouble(stry);
+                }
 
                 #endregion
             }
 
-            var result = calc.Sum(x, y);
+            var result = calc.Action(action, x, y);
 
-            Console.WriteLine($"Сумма = {result}");
+            Console.WriteLine($"{result}");
             Console.ReadKey();
         }
         /// <summary>
-        /// Перевод строки в int
+        /// Перевод строки в double
         /// </summary>
         /// <param name="arg"></param>
-        /// <param name="def">Если не удпалось распарсить, то возращаем 100</param>
         /// <returns></returns>
-        private static int ToInt(string arg, int def = 100)
+        private static double ToDouble(string arg)
         {
-            int x;
-            if (!int.TryParse(arg, out x))
+            double x;
+            if (!double.TryParse(arg, out x))
             {
-                x = def;
+                Console.WriteLine("Неверно введен параметр. Попробуйте еще раз");
+                arg = Console.ReadLine();
+                x = ToDouble(arg);
             }
 
             return x;
