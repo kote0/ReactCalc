@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{84E232F2-E7EA-44DA-90E9-A0B5B8F2E9C1}</ProjectGuid>
+    <ProjectGuid>{6F62FF98-1A63-4A1B-9393-AE8B5561AF22}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CalcBase</RootNamespace>
-    <AssemblyName>CalcBase</AssemblyName>
+    <RootNamespace>ArithmeticLibrary</RootNamespace>
+    <AssemblyName>ArithmeticLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,13 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\DivOperation.cs" />
-    <Compile Include="Models\IOperation.cs" />
-    <Compile Include="Models\MultiplicationOperation.cs" />
-    <Compile Include="Models\Operation.cs" />
-    <Compile Include="Models\SubtractionOperation.cs" />
-    <Compile Include="Models\SumOperation.cs" />
+    <Compile Include="ArithmeticOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CalcBase\CalcBase.csproj">
+      <Project>{84e232f2-e7ea-44da-90e9-a0b5b8f2e9c1}</Project>
+      <Name>CalcBase</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

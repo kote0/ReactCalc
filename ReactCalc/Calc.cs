@@ -1,11 +1,11 @@
-﻿using ReactCalc.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using CalcBase.Models;
 
 namespace ReactCalc
 {
@@ -15,8 +15,13 @@ namespace ReactCalc
         {
             Operations = new List<IOperation>();
             Operations.Add(new SumOperation());
+            Operations.Add(new DivOperation());
+            Operations.Add(new MultiplicationOperation());
+            Operations.Add(new SubtractionOperation());
 
-            var dllName = Directory.GetCurrentDirectory()+"\\FactorialLibrary.dll";
+            #region Факториал
+            //var dllName =Directory.GetCurrentDirectory() + "\\FactorialLibrary.dll";
+            var dllName = @"E:\ReactCalc\ArithmeticLibrary\bin\Debug" + "\\ArithmeticLibrary.dll";
 
             if (!File.Exists(dllName))
             {
@@ -24,7 +29,7 @@ namespace ReactCalc
             }
 
             // загружаем саму сборку
-            var assmbly = Assembly.LoadFrom("FactorialLibrary.dll");
+            var assmbly = Assembly.LoadFrom(dllName);
             // получааем все типы/классы из нее
             var types = assmbly.GetTypes();
             // перебираем типы
@@ -45,6 +50,7 @@ namespace ReactCalc
             }
             // Operations.Add(new FactorialOperation());
 
+            #endregion
         }
         public IList<IOperation> Operations { get; private set; }
 
@@ -72,8 +78,8 @@ namespace ReactCalc
             if (oper != null)
             {
                 // вычисляем результат
-                // отдаем пользователю
                 var result = oper.Execute(args);
+                // отдаем пользователю
                 return result;
             }
             throw new NotSupportedException("Не найдена запрашиваемая операция");
@@ -81,60 +87,11 @@ namespace ReactCalc
 
         private double Execute(Func<double[], double> fun, double[] args)
         {
+            // не реализован
             return fun(args);
         }
 
 
-        /// <summary>
-        /// Калькулятор
-        /// </summary>
-        /// <param name="action">Действие</param>
-        /// <param name="X">Первый параметр</param>
-        /// <param name="Y">Второй параметр</param>
-        /// <returns></returns>
-        public string Action(string action, double X, double Y)
-        {
-            string res = "";
-            double resultNumber = 0;
-            switch (action)
-            {
-                case "/":
-                    if (Y == 0)
-                    {
-                        res = "Невозможно делить на 0!";
-                    }
-                    else
-                    {
-                        resultNumber = X / Y;
-                        res = $"{resultNumber}";
-                    }
-                    break;
-                case "*":
-                    resultNumber = X * Y;
-                    res = $"{resultNumber}";
-                    break;
-                case "+":
-                    resultNumber = X + Y;
-                    res = $"{resultNumber}";
-                    break;
-                case "-":
-                    resultNumber = X - Y;
-                    res = $"{resultNumber}";
-                    break;
-                case "sqrt":
-                    resultNumber = Math.Sqrt(X);
-                    res = $"{resultNumber}";
-                    break;
-                case "^":
-                    resultNumber = Math.Pow(X, Y);
-                    res = $"{resultNumber}";
-                    break;
-                default:
-                    res = "Неправильно введены данные";
-                    break;
-            }
-            return res;
-        }
 
         [Obsolete("Используйте Execute('+', new[] {x,y}). Данная функция будет удалена в 4.0")]
         public double Sum(double X, double Y)

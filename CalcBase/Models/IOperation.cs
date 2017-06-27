@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReactCalc.Models
+namespace CalcBase.Models
 {
     public interface IOperation
     {

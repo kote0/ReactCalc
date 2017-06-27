@@ -6,21 +6,27 @@ using System.Threading.Tasks;
 
 namespace CalcBase.Models
 {
-    public class SumOperation : Operation
+
+    public class DivOperation : Operation
     {
         public override long Code
         {
-            get { return 1; }
+            get { return 3; }
         }
 
         public override string Name
         {
-            get { return "+"; }
+            get { return "/"; }
         }
 
         public override double Execute(double[] args)
         {
-            return args.Sum();
+            var res = args[0];
+            for (int i = 1; i < args.Length; i++)
+            {
+                res /= args[i];
+            }
+            return res;
         }
     }
 }

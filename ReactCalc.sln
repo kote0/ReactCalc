@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactorialLibrary", "Factori
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcBase", "CalcBase\CalcBase.csproj", "{84E232F2-E7EA-44DA-90E9-A0B5B8F2E9C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArithmeticLibrary", "ArithmeticLibrary\ArithmeticLibrary.csproj", "{6F62FF98-1A63-4A1B-9393-AE8B5561AF22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{84E232F2-E7EA-44DA-90E9-A0B5B8F2E9C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84E232F2-E7EA-44DA-90E9-A0B5B8F2E9C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84E232F2-E7EA-44DA-90E9-A0B5B8F2E9C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F62FF98-1A63-4A1B-9393-AE8B5561AF22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F62FF98-1A63-4A1B-9393-AE8B5561AF22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F62FF98-1A63-4A1B-9393-AE8B5561AF22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F62FF98-1A63-4A1B-9393-AE8B5561AF22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
