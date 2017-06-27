@@ -11,8 +11,8 @@ namespace ReactCalc
     {
         static void Main(string[] args)
         {
-            double x = 0;
-            double y = 0;
+            double x = 0d;
+            double y = 0d;
             string action = "";
             var calc = new Calc();
 
@@ -31,7 +31,7 @@ namespace ReactCalc
             {
                 action = args[0];
                 x = ToDouble(args[1]);
-                if (args.Length == 3)
+                if (args.Length >= 3)
                 {
                     y = ToDouble(args[2]);
                 }
@@ -60,9 +60,15 @@ namespace ReactCalc
                 #endregion
             }
 
-            var result = calc.Action(action, x, y);
-
-            Console.WriteLine($"{result}");
+            try
+            {
+                var result = calc.Execute(action, new[] { x, y });
+                Console.WriteLine($"{result}");
+            }
+            catch (NotSupportedException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             Console.ReadKey();
         }
         /// <summary>
@@ -75,7 +81,7 @@ namespace ReactCalc
             double x;
             if (!double.TryParse(arg, out x))
             {
-                Console.WriteLine("Неверно введен параметр. Попробуйте еще раз");
+                Console.WriteLine("Неверно введен параметр. Попробуйте еще раз. Пример: -2,3");
                 arg = Console.ReadLine();
                 x = ToDouble(arg);
             }
