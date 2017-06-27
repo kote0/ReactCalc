@@ -1,4 +1,4 @@
-﻿using ReactCalc.Models;
+﻿using CalcBase.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace FactorialLibrary
         {
             get
             {
-                return "f";
+                return "factorial";
             }
         }
 

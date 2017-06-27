@@ -11,7 +11,7 @@ namespace TestCalc
         public void TestSum()
         {
             var calc = new Calc();
-            var x = calc.Execute("+", new[] { 1d, 2d });
+            var x = calc.Execute(1, new[] { 1d, 2d });
 
             Assert.AreEqual(x,3);
         }
@@ -19,17 +19,28 @@ namespace TestCalc
         public void TestDivide()
         {
             var calc = new Calc();
-            var x = calc.Action("/", 2, 2);
+            var x = calc.Execute("/", new[] { 4.0, 2.0 });
+            Assert.AreEqual(x, 2);
+            Assert.AreEqual(calc.Execute(3, new[] { 6.0, 2.0 }), 3);
 
-            Assert.AreEqual(x, "1");
         }
         [TestMethod]
-        public void TestPow()
+        public void TestArithmetic()
         {
             var calc = new Calc();
-            var x = calc.Action("^", 2,2);
-
-            Assert.AreEqual(x, "4");
+            Assert.AreEqual(calc.Execute("arithmetic", new[] { 4.0, 4.0 }), 4);
+        }
+        [TestMethod]
+        public void TestMul()
+        {
+            var calc = new Calc();
+            Assert.AreEqual(calc.Execute("*", new[] { 4.0, 4.0 }), 16);
+        }
+        [TestMethod]
+        public void TestSub()
+        {
+            var calc = new Calc();
+            Assert.AreEqual(calc.Execute("-", new[] { 4.0, 4.0 }), 0);
         }
     }
 }
