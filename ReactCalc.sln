@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcBase", "CalcBase\CalcBa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArithmeticLibrary", "ArithmeticLibrary\ArithmeticLibrary.csproj", "{6F62FF98-1A63-4A1B-9393-AE8B5561AF22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinCalc", "WinCalc\WinCalc.csproj", "{C98D9C11-B1D1-4AE9-828D-DD5760D4D1D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6F62FF98-1A63-4A1B-9393-AE8B5561AF22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F62FF98-1A63-4A1B-9393-AE8B5561AF22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F62FF98-1A63-4A1B-9393-AE8B5561AF22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C98D9C11-B1D1-4AE9-828D-DD5760D4D1D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C98D9C11-B1D1-4AE9-828D-DD5760D4D1D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C98D9C11-B1D1-4AE9-828D-DD5760D4D1D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C98D9C11-B1D1-4AE9-828D-DD5760D4D1D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
