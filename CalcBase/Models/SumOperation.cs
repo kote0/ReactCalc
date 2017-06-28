@@ -22,5 +22,17 @@ namespace CalcBase.Models
         {
             return args.Sum();
         }
+        public override string DisplayName
+        {
+            get { return "Сумма"; }
+        }
+        public override string Description
+        {
+            get { return "Немецкая денежная единица."; }
+        }
+        public override string Type
+        {
+            get { return "Простая задача"; }
+        }
     }
 }

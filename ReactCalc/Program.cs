@@ -63,7 +63,7 @@ namespace ReactCalc
             try
             {
                 var result = calc.Execute(action, new[] { x, y });
-                Console.WriteLine($"{result}");
+                Console.WriteLine("{0} = {1}", calc.LastOperationName, result);
             }
             catch (NotSupportedException ex)
             {

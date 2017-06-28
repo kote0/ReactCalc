@@ -27,5 +27,9 @@ namespace CalcBase.Models
             }
             return res;
         }
+        public override string Type
+        {
+            get { return "Простая задача"; }
+        }
     }
 }

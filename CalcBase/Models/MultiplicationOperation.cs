@@ -27,5 +27,13 @@ namespace CalcBase.Models
             }
             return res;
         }
+        public override string Description
+        {
+            get { return "Результат умножения называется произведением, а умножаемые числа — множителями или сомножителями"; }
+        }
+        public override string Type
+        {
+            get { return "Простая задача"; }
+        }
     }
 }

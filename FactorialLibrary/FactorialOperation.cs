@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace FactorialLibrary
 {
-    public class FactorialOperation : IOperation
+    public class FactorialOperation : Operation
     {
-        public long Code
+        public override long Code
         {
             get
             {
@@ -17,7 +17,7 @@ namespace FactorialLibrary
             }
         }
 
-        public string Name
+        public override string Name
         {
             get
             {
@@ -25,7 +25,7 @@ namespace FactorialLibrary
             }
         }
 
-        public double Execute(double[] args)
+        public override double Execute(double[] args)
         {
             var x = args[0];
             var count = 1d;
@@ -36,5 +36,6 @@ namespace FactorialLibrary
             }
             return result;
         }
+
     }
 }
