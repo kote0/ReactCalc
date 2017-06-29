@@ -14,13 +14,31 @@ namespace WinCalc
 {
     public partial class frmMain : Form
     {
+        //private 
         private Calc Calc { get; set; }
+        private IOperation op { get; set; }
+        private IOperation O
+        {
+            get
+            {
+                return op;
+            }
+            set
+            {
+                op = value;
+                DisOperation = value as IDisplayOperation;
+            }
+        }
+
+        private IDisplayOperation DisOperation { get; set; }
+        private DateTime? lastPressTime { get; set; }
+
         public frmMain()
         {
             InitializeComponent();
         }
 
-       
+
 
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -48,7 +66,6 @@ namespace WinCalc
 
         private void lbOperations_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // lblDescription.Text = "";
             var displayOper = lbOperations.SelectedItem as IDisplayOperation;
             if (displayOper != null)
             {
@@ -59,13 +76,19 @@ namespace WinCalc
                     ? displayOper.Description
                     : "");
             }
+            lastPressTime = DateTime.Now;
+            timer1.Start();
         }
 
         private void tbX_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (SelectAction() != "Сложная задача") Calculate();
+                if (SelectAction() != "Сложная задача")
+                {
+                    lastPressTime = DateTime.Now;
+                    timer1.Start();
+                }
                 tbY.Focus();
             }
         }
@@ -74,18 +97,24 @@ namespace WinCalc
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (SelectAction() != "Сложная задача") Calculate();
+                if (SelectAction() != "Сложная задача")
+                {
+                    lastPressTime = DateTime.Now;
+                    timer1.Start();
+                }
                 tbX.Focus();
             }
         }
 
         private void tbX_TextChanged(object sender, EventArgs e)
         {
-            if (tbX.Text == "")
+            if (tbX.Text == "" || SelectAction() == "Сложная задача")
             {
                 return;
             }
-            
+            lastPressTime = DateTime.Now;
+            timer1.Start();
+
         }
 
         private void tbY_TextChanged(object sender, EventArgs e)
@@ -94,17 +123,17 @@ namespace WinCalc
             {
                 return;
             }
-            
+            lastPressTime = DateTime.Now;
+            timer1.Start();
         }
 
         private string SelectAction()
         {
             var oper = lbOperations.SelectedItem as IOperation;
 
-            var displayOper = oper as IDisplayOperation;
 
-            string type = displayOper != null
-                ? displayOper.Type
+            string type = DisOperation != null
+                ? DisOperation.Type
                 : "Сложная задача";
             type = type != ""
                 ? "Простая задача"
@@ -131,10 +160,9 @@ namespace WinCalc
                 // вычисляем 
                 var result = Calc.Execute(oper.Execute, new[] { x, y });
 
-                var displayOper = oper as IDisplayOperation;
 
-                string operName = displayOper != null
-                    ? displayOper.DisplayName
+                string operName = DisOperation != null
+                    ? DisOperation.DisplayName
                     : oper.Name;
                 // возвращаем результат
                 lblResult.Text = string.Format("{0} = {1} {2}", operName, result, Environment.NewLine);
@@ -148,6 +176,21 @@ namespace WinCalc
         private void frmMain_Activated(object sender, EventArgs e)
         {
             tbX.Focus();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (lastPressTime.HasValue)
+            {
+                var diffTime = DateTime.Now - lastPressTime.Value;
+
+                if (diffTime.TotalMilliseconds >= 200)
+                {
+                    Calculate();
+                    lastPressTime = null;
+                    timer1.Stop();
+                }
+            }
         }
     }
 }

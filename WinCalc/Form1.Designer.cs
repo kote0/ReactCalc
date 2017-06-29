@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblResult = new System.Windows.Forms.Label();
             this.lbOperations = new System.Windows.Forms.ListBox();
             this.btnCalc = new System.Windows.Forms.Button();
@@ -40,6 +41,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnClose1 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -174,6 +176,10 @@
             this.btnClose1.UseVisualStyleBackColor = true;
             this.btnClose1.Click += new System.EventHandler(this.btnClose1_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,6 +219,7 @@
         private System.Windows.Forms.Button btnClose1;
         private System.Windows.Forms.TextBox tbY;
         private System.Windows.Forms.TextBox tbX;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
