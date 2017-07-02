@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{14971DCD-4EC2-4046-8081-D7BE018003C6}</ProjectGuid>
+    <ProjectGuid>{3D59D8F8-C667-43E2-9A21-8C0A3A7A2714}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ReactCalc</RootNamespace>
     <AssemblyName>ReactCalc</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CalcBase\CalcBase.csproj">
-      <Project>{84e232f2-e7ea-44da-90e9-a0b5b8f2e9c1}</Project>
+      <Project>{e4375ef6-1fa5-4086-b221-a95dc26b0eac}</Project>
       <Name>CalcBase</Name>
     </ProjectReference>
   </ItemGroup>

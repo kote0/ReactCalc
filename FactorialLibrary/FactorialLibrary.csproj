@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AEA73B2B-0D3E-46BC-8781-945FB7B2E3D7}</ProjectGuid>
+    <ProjectGuid>{11DC5787-C4E3-48C0-8135-01223D32783A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FactorialLibrary</RootNamespace>
     <AssemblyName>FactorialLibrary</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CalcBase\CalcBase.csproj">
-      <Project>{84e232f2-e7ea-44da-90e9-a0b5b8f2e9c1}</Project>
+      <Project>{e4375ef6-1fa5-4086-b221-a95dc26b0eac}</Project>
       <Name>CalcBase</Name>
     </ProjectReference>
   </ItemGroup>

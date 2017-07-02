@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Find";
+}
+
+<h3>@ViewBag.Name.FIO</h3>
+
+@foreach (var user in ViewBag.Users)
+{
+    <div>@user</div>
+}

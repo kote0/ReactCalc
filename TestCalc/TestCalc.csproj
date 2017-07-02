@@ -3,12 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{57DE304D-C6BD-47B0-8111-65FDDC06CCFF}</ProjectGuid>
+    <ProjectGuid>{CCDBEA01-5673-402C-BF80-18CEBE263ED7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestCalc</RootNamespace>
     <AssemblyName>TestCalc</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CalcBase\CalcBase.csproj">
-      <Project>{84e232f2-e7ea-44da-90e9-a0b5b8f2e9c1}</Project>
-      <Name>CalcBase</Name>
+    <ProjectReference Include="..\ReactCalc\ReactCalc.csproj">
+      <Project>{3d59d8f8-c667-43e2-9a21-8c0a3a7a2714}</Project>
+      <Name>ReactCalc</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

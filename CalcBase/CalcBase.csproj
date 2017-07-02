@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{84E232F2-E7EA-44DA-90E9-A0B5B8F2E9C1}</ProjectGuid>
+    <ProjectGuid>{E4375EF6-1FA5-4086-B221-A95DC26B0EAC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CalcBase</RootNamespace>
     <AssemblyName>CalcBase</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -41,12 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calc.cs" />
-    <Compile Include="Models\DivOperation.cs" />
     <Compile Include="Models\IDisplayOperation.cs" />
     <Compile Include="Models\IOperation.cs" />
-    <Compile Include="Models\MultiplicationOperation.cs" />
     <Compile Include="Models\Operation.cs" />
-    <Compile Include="Models\SubtractionOperation.cs" />
+    <Compile Include="Models\DivideOperation.cs" />
     <Compile Include="Models\SumOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

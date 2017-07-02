@@ -11,36 +11,44 @@ namespace TestCalc
         public void TestSum()
         {
             var calc = new Calc();
-            var x = calc.Execute(1, new[] { 1d, 2d });
-
-            Assert.AreEqual(x,3);
+            var x = calc.Sum(1, 2);
+            
+            Assert.AreEqual(x, 3);
+            Assert.AreEqual(calc.Sum(0, 0), 0);
+            Assert.AreEqual(calc.Sum(-1, 2), 1);
+            Assert.AreEqual(calc.Sum(3, 3), 6);
         }
+
         [TestMethod]
         public void TestDivide()
         {
             var calc = new Calc();
-            var x = calc.Execute("/", new[] { 4.0, 2.0 });
-            Assert.AreEqual(x, 2);
-            Assert.AreEqual(calc.Execute(3, new[] { 6.0, 2.0 }), 3);
+            var x = calc.Divide(2, 2);
+            var y = calc.Divide(2, 0);
 
+            Assert.AreEqual(x, 1);
+            Assert.AreEqual(y, double.PositiveInfinity);
         }
+
         [TestMethod]
-        public void TestArithmetic()
+        public void TestSqrt()
         {
             var calc = new Calc();
-            Assert.AreEqual(calc.Execute("arithmetic", new[] { 4.0, 4.0 }), 4);
+            var x = calc.Sqrt(4);
+
+            Assert.AreEqual(x, 2);
         }
+
         [TestMethod]
-        public void TestMul()
+        public void TestPow()
         {
             var calc = new Calc();
-            Assert.AreEqual(calc.Execute("*", new[] { 4.0, 4.0 }), 16);
+            var x = calc.Pow(2, 2);
+            var y = calc.Pow(2, 0);
+
+            Assert.AreEqual(x, 4);
+            Assert.AreEqual(y, 1);
         }
-        [TestMethod]
-        public void TestSub()
-        {
-            var calc = new Calc();
-            Assert.AreEqual(calc.Execute("-", new[] { 4.0, 4.0 }), 0);
-        }
+
     }
 }
