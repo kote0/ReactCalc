@@ -85,9 +85,8 @@ namespace DomainModels.Repository
         {
             throw new NotImplementedException();
         }
-        public IEnumerable<Array> Find(long id)
+        public IEnumerable<string[]> Find(long id)
         {
-            List<Array> findUser = new List<Array>();
             using (var connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\ReactCalc\DomainModels\App_Data\reactCalc.mdf;Integrated Security=True"))
             {
                 SqlCommand command = new SqlCommand("select Operation.Name, Operation.FullName, " +
@@ -103,19 +102,16 @@ namespace DomainModels.Repository
                 {
                     while (reader.Read())
                     {
-                        var ar = new[] {
+                        yield return new[] {
                             reader.GetString(0),
                             reader.GetString(1),
                             reader.GetString(2),
                             reader.GetFloat(3).ToString(),
                             reader.GetString(4)
                         };
-
-                        findUser.Add(ar);
                     }
                 }
                 reader.Close();
-                return findUser;
             }
         }
     }

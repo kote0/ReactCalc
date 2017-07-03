@@ -37,7 +37,7 @@ namespace DomainModels.Repository
                         yield return new UserFavoriteResult()
                         {
                             Id = id,
-                            User = user,
+                            //User = user,
                             Result = OperationResultRepository.Get(result)
                         };
                     }
