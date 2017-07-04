@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
@@ -15,12 +14,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCalc1", "WebCalc1\WebCal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModels", "DomainModels\DomainModels.csproj", "{7257E031-95BC-4675-B337-193420BB5C31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCalc", "WebCalc\WebCalc.csproj", "{043CD1DA-2A20-4DEB-86FE-EB482AE95822}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+
 		{3D59D8F8-C667-43E2-9A21-8C0A3A7A2714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3D59D8F8-C667-43E2-9A21-8C0A3A7A2714}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D59D8F8-C667-43E2-9A21-8C0A3A7A2714}.Release|Any CPU.ActiveCfg = Release|Any CPU
