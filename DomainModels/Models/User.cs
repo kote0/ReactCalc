@@ -20,6 +20,7 @@ namespace DomainModels.Models
         public Guid Uid { get; set; }
         public string Login { get; set; }
         public string FIO { get; set; }
+        public string Password { get; set; }
         public virtual ICollection<OperationResult> OperationResult { get; set; }
         public virtual ICollection<UserFavoriteResult> UserFavoriteResult { get; set; }
     }

@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+<p>@Html.ActionLink("Create New", "Create")</p>
 <table class="table">
     <thead>
         <tr>
@@ -9,6 +9,7 @@
             <th>Id</th>
             <th>Фамилия</th>
             <th>Логин</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -17,8 +18,9 @@
             <tr>
                 <td></td>
                 <td>@user.Id</td>
-                <td><a href="Home/Find?Id=@user.Id">@user.FIO</a></td>
+                <td><a href="Find?Id=@user.Id">@user.FIO</a></td>
                 <td>@user.Login</td>
+                <th><a href="Home/Delete?Id=@user.Id">Удалить</a></th>
             </tr>
         }
     </tbody>

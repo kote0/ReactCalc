@@ -9,11 +9,10 @@ namespace DomainModels.Repository
 {
     public interface IUserRepository
     {
-        User Create();
+        User Create(User user);
         User Get(long Id);
         void Update(User user);
         void Delete(User user);
         IEnumerable<User> GetAll();
-        IEnumerable<string[]> Find(long id);
     }
 }

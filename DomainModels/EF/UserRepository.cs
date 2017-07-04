@@ -16,26 +16,23 @@ namespace DomainModels.EF
         {
             this.context = new CalcContext();
         }
-        public User Create()
+        public User Create(User user)
         {
-            throw new NotImplementedException();
+            context.Users.Add(user);
+            context.SaveChanges();
+            return user;
         }
 
         public void Delete(User user)
         {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<string[]> Find(long id)
-        {
-            throw new NotImplementedException();
+            context.Users.Remove(user);
+            context.SaveChanges();
         }
 
         public User Get(long Id)
         {
             
-            return context.Users
-                .FirstOrDefault(i => i.Id == Id);
+            return context.Users.FirstOrDefault(i => i.Id == Id);
         }
 
         public IEnumerable<User> GetAll()

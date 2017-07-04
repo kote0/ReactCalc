@@ -10,7 +10,7 @@ namespace DomainModels.Repository
 {
     public class UserRepository : IUserRepository
     {
-        public User Create()
+        public User Create(User user)
         {
             throw new NotImplementedException();
         }
