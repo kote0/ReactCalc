@@ -21,6 +21,7 @@ namespace DomainModels.Models
         public string Login { get; set; }
         public string FIO { get; set; }
         public string Password { get; set; }
+        public bool IsDeleted { get; set; }
         public virtual ICollection<OperationResult> OperationResult { get; set; }
         public virtual ICollection<UserFavoriteResult> UserFavoriteResult { get; set; }
     }

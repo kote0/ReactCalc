@@ -18,14 +18,14 @@ namespace DomainModels.Repository
             this.selectByIdQuery = selectByIdQuery;
         }
 
-        private const string ConnString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=G:\ReactCalc\DomainModels\App_Data\reactcalc.mdf;Integrated Security=True";
+        private const string ConnString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\ReactCalc\DomainModels\App_Data\reactCalc.mdf;Integrated Security=True";
 
         public T Create()
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(T user)
+        public void Delete(T item)
         {
             throw new NotImplementedException();
         }
@@ -75,7 +75,7 @@ namespace DomainModels.Repository
             }
         }
 
-        public void Update(T user)
+        public void Update(T item)
         {
             throw new NotImplementedException();
         }

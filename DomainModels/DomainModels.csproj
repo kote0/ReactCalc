@@ -65,6 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EF\CalcContext.cs" />
+    <Compile Include="EF\OperationRepository.cs" />
+    <Compile Include="EF\ORRepository.cs" />
     <Compile Include="Models\Operation.cs" />
     <Compile Include="Models\OperationResult.cs" />
     <Compile Include="Models\User.cs" />
@@ -75,12 +77,9 @@
     <Compile Include="Repository\IEntityRepository.cs" />
     <Compile Include="Repository\IOperationRepository.cs" />
     <Compile Include="Repository\IOperationResultRepository.cs" />
+    <Compile Include="Repository\IORepository.cs" />
     <Compile Include="Repository\IUserFavoriteRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
-    <Compile Include="Repository\OperationResultRepository.cs" />
-    <Compile Include="Repository\UserFavoriteRepository.cs" />
-    <Compile Include="Repository\OperationRepository.cs" />
-    <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

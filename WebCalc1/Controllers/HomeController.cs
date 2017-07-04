@@ -10,19 +10,22 @@ namespace WebCalc1.Controllers
 {
     public class HomeController : Controller
     {
-        private IUserRepository UserRepository { get; set; }
 
+
+        private IUserRepository UserRepository { get; set; }
         public HomeController()
         {
             UserRepository = new DomainModels.EF.UserRepository();
         }
+
+
+
         public ActionResult Index()
         {
             ViewBag.Users = UserRepository.GetAll();
 
             return View();
         }
-        
         public ActionResult Find(long Id)
         {
             return View(UserRepository.Get(Id));
@@ -45,5 +48,6 @@ namespace WebCalc1.Controllers
 
             return RedirectToAction("Index");
         }
+        
     }
 }

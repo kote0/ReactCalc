@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DomainModels.Repository
 {
-    public interface IOperationRepository : IEntityRepository<Operation>
+    public interface IORepository : IEntityRepository<OperationResult>
     {
-        Operation GetByName(string name);
+        double GetOldResult(long operationId, string InputData);
     }
 }

@@ -37,10 +37,20 @@
     </dl>
 </div>
 <div>
-    @foreach (var or in Model.UserFavoriteResult)
-    {
-        <li>@or.Result.Operation.Name @or.Result</li>
-    }
+    Favorite:
+    <ul>
+        @foreach (var or in Model.UserFavoriteResult)
+        {
+            <li>@or.Result.Operation.Name  @or.Result.InputData @or.Result.ExecutionDate</li>
+        }
+    </ul>
+    History:
+    <ul>
+        @foreach (var or in Model.OperationResult)
+        {
+            <li>@or.Operation.FullName ( @or.InputData ) = @or.Result  @or.ExecutionDate</li>
+        }
+    </ul>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

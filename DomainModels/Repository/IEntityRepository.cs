@@ -8,9 +8,9 @@ namespace DomainModels.Repository
 
         T Get(long id);
 
-        void Update(T user);
+        void Update(T item);
 
-        void Delete(T user);
+        void Delete(T item);
 
         IEnumerable<T> GetAll();
     }

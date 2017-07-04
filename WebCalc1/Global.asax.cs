@@ -12,6 +12,8 @@ namespace WebCalc1
     {
         protected void Application_Start()
         {
+            AutofacConfic.ConfigureContainer();
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -13,14 +13,14 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var user in ViewBag.Users)
+        @foreach (var user in ViewBag.Users as IEnumerable<DomainModels.Models.User>)
             {
             <tr>
                 <td></td>
                 <td>@user.Id</td>
-                <td><a href="Find?Id=@user.Id">@user.FIO</a></td>
+                <td>@Html.ActionLink(user.FIO, "Find", new { user.Id })</td>
                 <td>@user.Login</td>
-                <th><a href="Home/Delete?Id=@user.Id">Удалить</a></th>
+                <th>@Html.ActionLink("Удалить", "Delete", new { user.Id })</th>
             </tr>
         }
     </tbody>

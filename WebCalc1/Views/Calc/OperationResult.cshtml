@@ -1,0 +1,56 @@
+﻿@model IEnumerable<DomainModels.Models.OperationResult>
+
+@{
+    ViewBag.Title = "Результаты операций";
+}
+
+<h2>Результаты операций</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OperationId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InputData)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Result)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExecutionTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExecutionDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InputData)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Result)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExecutionTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExecutionDate)
+        </td>
+        <td></td>
+    </tr>
+}
+
+</table>

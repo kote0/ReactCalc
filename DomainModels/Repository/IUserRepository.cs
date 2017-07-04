@@ -14,5 +14,7 @@ namespace DomainModels.Repository
         void Update(User user);
         void Delete(User user);
         IEnumerable<User> GetAll();
+        bool IsValid(string name, string pass);
+        User GetByName(string name);
     }
 }
