@@ -1,4 +1,4 @@
-﻿using CalcBase.Models;
+﻿using ReactCalc.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,35 +7,29 @@ using System.Threading.Tasks;
 
 namespace FactorialLibrary
 {
-    public class FactorialOperation : Operation
+    public class FactorialOperation : IOperation
     {
-        public override long Code
+        public long Code
         {
-            get
-            {
-                return 1000;
-            }
+            get { return 1000; }
         }
 
-        public override string Name
+        public string Name
         {
-            get
-            {
-                return "factorial";
-            }
+            get { return "factorial"; }
         }
 
-        public override double Execute(double[] args)
+        public double Execute(double[] args)
         {
             var x = args[0];
             var count = 1d;
             var result = 1d;
-            while (count <= x)
+
+            while (count < x)
             {
                 result *= count++;
             }
             return result;
         }
-
     }
 }

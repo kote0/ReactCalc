@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C98D9C11-B1D1-4AE9-828D-DD5760D4D1D2}</ProjectGuid>
+    <ProjectGuid>{6A396194-9A5F-4A74-B2D3-9A531A7220B5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WinCalc</RootNamespace>
     <AssemblyName>WinCalc</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
@@ -81,7 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CalcBase\CalcBase.csproj">
-      <Project>{84e232f2-e7ea-44da-90e9-a0b5b8f2e9c1}</Project>
+      <Project>{E4375EF6-1FA5-4086-B221-A95DC26B0EAC}</Project>
       <Name>CalcBase</Name>
     </ProjectReference>
   </ItemGroup>

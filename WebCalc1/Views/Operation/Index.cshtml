@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Id</th>
+            <th>Название</th>
+            <th>Полное наименование</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var operation in ViewBag.Operation)
+            {
+            <tr>
+                <td></td>
+                <td>@operation.Id</td>
+                <td>@operation.Name</td>
+                <td>@operation.FullName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

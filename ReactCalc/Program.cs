@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
 
 namespace ReactCalc
 {
@@ -11,79 +10,70 @@ namespace ReactCalc
     {
         static void Main(string[] args)
         {
-            double x = 0d;
-            double y = 0d;
-            string action = "";
-            var calc = new Calc();
-
-            #region Инструкция
             Console.WriteLine("Hello, i'm Калькулятор");
-            Console.WriteLine("Инструкция:");
-            Console.WriteLine("'/' - деление");
-            Console.WriteLine("'*' - умножение");
-            Console.WriteLine("'-' - вычитание");
-            Console.WriteLine("'+' - сумма");
-            Console.WriteLine("'sqrt' - квадратный корень");
-            #endregion
 
+            var x = 0d;
+            var y = 0d;
+            var calc = new Calc();
+            var oper = "sum";
 
             if (args.Length >= 2)
             {
-                action = args[0];
-                x = ToDouble(args[1]);
+                x = ToNumber(args[0], 70);
                 if (args.Length >= 3)
                 {
-                    y = ToDouble(args[2]);
+                    y = ToNumber(args[1], 83);
                 }
-                else
-                {
-                    y = ToDouble(args[1]);
-                }
+                oper = args.Last();
             }
             else
             {
                 #region Ввод данных
 
-                Console.WriteLine("Введите действие");
-                action = Console.ReadLine();
-
                 Console.WriteLine("Введите Х");
                 var strx = Console.ReadLine();
-                x = ToDouble(strx);
-                if (action != "sqrt")
-                {
-                    Console.WriteLine("Введите Y");
-                    var stry = Console.ReadLine();
-                    y = ToDouble(stry);
-                }
+                x = ToNumber(strx);
+
+                Console.WriteLine("Введите Y");
+                var stry = Console.ReadLine();
+                y = ToNumber(stry, 99);
+
+                Console.WriteLine("Введите операцию");
+                oper = Console.ReadLine();
 
                 #endregion
             }
 
             try
             {
-                var result = calc.Execute(action, new[] { x, y });
-                Console.WriteLine("{0} = {1}", calc.LastOperationName, result);
+                var result = calc.Execute(oper, new[] { x, y });
+
+                Console.WriteLine(String.Format("{0} = {1}", calc.LastOperationName, result));
+                // * 
+                // sum = 5
+                // Сумма = 5
             }
             catch (NotSupportedException ex)
             {
                 Console.WriteLine(ex.Message);
             }
+
+
             Console.ReadKey();
         }
+
         /// <summary>
-        /// Перевод строки в double
+        /// Строку в инт
         /// </summary>
         /// <param name="arg"></param>
+        /// <param name="def">Если не удалось распарсить, то возвращаем это значение</param>
         /// <returns></returns>
-        private static double ToDouble(string arg)
+        private static double ToNumber(string arg, double def = 100)
         {
             double x;
             if (!double.TryParse(arg, out x))
             {
-                Console.WriteLine("Неверно введен параметр. Попробуйте еще раз. Пример: -2,3");
-                arg = Console.ReadLine();
-                x = ToDouble(arg);
+                x = def;
             }
 
             return x;

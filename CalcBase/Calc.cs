@@ -1,118 +1,145 @@
-﻿using System;
+﻿using ReactCalc.Models;
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using CalcBase.Models;
 
 namespace ReactCalc
 {
+    /// <summary>
+    /// Калькулятор
+    /// </summary>
     public class Calc
     {
+
         public string LastOperationName { get; set; }
-        public IList<IOperation> Operations { get; private set; }
 
         public Calc()
         {
             Operations = new List<IOperation>();
-            Operations.Add(new SumOperation());
-            Operations.Add(new DivOperation());
-            Operations.Add(new MultiplicationOperation());
-            Operations.Add(new SubtractionOperation());
+
+            var currentAssembly = Assembly.GetAssembly(typeof(IOperation));
+            GetOperations(currentAssembly);
 
             // директория с расширениями
             var extsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Extensions");
+
             if (!Directory.Exists(extsDirectory))
                 return;
+
             var exts = Directory.GetFiles(extsDirectory, "*.dll");
 
             foreach (var dllName in exts)
             {
-                GetOperation(dllName);
+                var assembly = Assembly.LoadFrom(dllName);
+                GetOperations(assembly);
             }
 
-
-
         }
-        private void GetOperation(string name)
-        {
-            if (!File.Exists(name))
-                return;
 
-            // загружаем саму сборку
-            var assmbly = Assembly.LoadFrom(name);
-            // получааем все типы/классы из нее
-            var types = assmbly.GetTypes();
+        private void GetOperations(Assembly assembly)
+        {
+            // получаем всем типы/классы из нее
+            var types = assembly.GetTypes();
             // перебираем типы
             var searchInterface = typeof(IOperation);
             foreach (var t in types)
             {
-                // находим тех, кто реализует интерфейся IOperation
-                var interfaces = t.GetInterfaces();
-                if (interfaces.Contains(searchInterface))
+                if (t.IsAbstract || t.IsInterface)
+                    continue;
+
+                // находим тех, кто реализует интерфейc IOperation
+                var interfs = t.GetInterfaces();
+                if (interfs.Contains(searchInterface))
                 {
                     // создаем экземпляр найденного класса
                     var instance = Activator.CreateInstance(t) as IOperation;
                     if (instance != null)
                     {
-                        // добавляем в наш список операций
+                        // добавляем его в наш список операций
                         Operations.Add(instance);
                     }
                 }
             }
         }
-        
-        public double Execute(string name, double[] args)
-        {
-            return Execute(i => i.Name == name, args);
-        }
-        public double Execute(long code, double[] args)
-        {
-            return Execute(i => i.Code == code, args);
-        }
+
+        public IList<IOperation> Operations { get; private set; }
+
         private double Execute(Func<IOperation, bool> selector, double[] args)
         {
-            IOperation oper = Operations.FirstOrDefault(selector);
+            // находим операцию по имени
+            var oper = Operations.FirstOrDefault(selector);
+
             if (oper != null)
             {
+
                 var displayOper = oper as IDisplayOperation;
 
                 LastOperationName = displayOper != null
-                    ? displayOper.DisplayName 
+                    ? displayOper.DisplayName
                     : oper.Name;
 
-                // вычисляем результат
+                // вычисляем результат 
                 var result = oper.Execute(args);
                 // отдаем пользователю
                 return result;
             }
+
             throw new NotSupportedException("Не найдена запрашиваемая операция");
+        }
+
+        public double Execute(string name, double[] args)
+        {
+            return Execute(i => i.Name == name, args);
+        }
+
+        public double Execute(long code, double[] args)
+        {
+            return Execute(i => i.Code == code, args);
         }
 
         public double Execute(Func<double[], double> fun, double[] args)
         {
-            // не реализован
             return fun(args);
         }
-        [Obsolete("Используйте Execute('+', new[] {x,y}). Данная функция будет удалена в 4.0")]
-        public double Sum(double X, double Y)
-        {
-            return Execute("+", new[] { X, Y });
 
-        }
-        public static double ToDouble(string arg)
+        public static double ToNumber(string arg, double def = 0)
         {
             double x;
             if (!double.TryParse(arg, out x))
             {
-                /*Console.WriteLine("Неверно введен параметр. Попробуйте еще раз. Пример: -2,3");
-                arg = Console.ReadLine();
-                x = ToDouble(arg);*/
+                x = def;
             }
 
             return x;
+        }
+
+        /// <summary>
+        /// Сумма
+        /// </summary>
+        /// <param name="x">Слагаемое</param>
+        /// <param name="y">Слагаемое</param>
+        /// <returns>Целое число</returns>
+        [Obsolete("Используйте Execute('sum', new[]{x, y}). Данная функция будет удалена в версии 4.0")]
+        public double Sum(double x, double y)
+        {
+            return Execute("sum", new[] { x, y });
+        }
+
+        public double Divide(double x, double y)
+        {
+            return x / y;
+        }
+
+        public double Sqrt(double x)
+        {
+            return Math.Sqrt(x);
+        }
+
+        public double Pow(double x, double y)
+        {
+            return Math.Pow(x, y);
         }
 
     }

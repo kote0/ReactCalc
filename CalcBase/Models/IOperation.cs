@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CalcBase.Models
+namespace ReactCalc.Models
 {
     public interface IOperation
     {
         long Code { get; }
+
         string Name { get; }
+
         double Execute(double[] args);
     }
 }

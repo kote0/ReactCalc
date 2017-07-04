@@ -1,0 +1,48 @@
+﻿@model DomainModels.Models.User
+
+@{
+    ViewBag.Title = "Find";
+}
+
+<h2>Find</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Uid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FIO)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    @foreach (var or in Model.UserFavoriteResult)
+    {
+        <li>@or.Result.Operation.Name @or.Result</li>
+    }
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
