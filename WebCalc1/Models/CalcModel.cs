@@ -12,6 +12,7 @@ namespace WebCalc1.Models
         public double? Y { get; set; }
         public double[] Arguments { get { return new[] { X ?? 0, Y ?? 0 }; } }
         public double? Result { get; set; }
+        public bool IsCompute { get; set; }
     }
 
     

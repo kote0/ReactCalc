@@ -1,0 +1,180 @@
+﻿@model IEnumerable<DomainModels.Models.OperationResult>
+
+@{
+    ViewBag.Title = "Index";
+    var message = ViewBag.Message as string;
+
+}
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#Result" aria-controls="Result" role="tab" data-toggle="tab">Результаты</a></li>
+    <li role="presentation"><a href="#Favorites" aria-controls="Favorites" role="tab" data-toggle="tab">Избранное</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+
+
+    <div role="tabpanel" class="tab-pane active" id="Result">
+
+
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Author)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Operation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InputData)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Result)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExecutionTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExecutionDate)
+                </th>
+                <th></th>
+            </tr>
+            @if (Model == null) { return; }
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Operation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InputData)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Result)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExecutionTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExecutionDate)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" onclick="like(this, @item.Id)">
+                        @if (item.IsLiked)
+                            {
+                            @:<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> Dislike
+                    }
+                            else
+                            {
+                            @:<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Like
+                    }
+                    </button>
+                </td>
+            </tr>
+            }
+
+        </table>
+
+
+
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Favorites">
+
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Author)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Operation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InputData)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Result)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExecutionTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExecutionDate)
+                </th>
+                <th></th>
+            </tr>
+            @if (Model == null) { return; }
+            @foreach (var item in Model)
+            {
+                if (item.IsLiked)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Author)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Operation)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InputData)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Result)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ExecutionTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ExecutionDate)
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="like(this, @item.Id)">
+
+                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> Dislike
+
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </table>
+
+
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $('#Result a').tab('show');
+    $('#Favorites a').tab('show');
+
+    function like(elem, id) {
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Like")",
+            data: { "id": id },
+            success: function (msg) {
+                if (msg.Success) {
+                    $(elem).html(msg.Name);
+                    if (msg.Name == "Like")
+                        $(elem).html("<span class='glyphicon glyphicon-star'aria-hidden='true'></span> " + msg.Name);
+                    else
+                        $(elem).html("<span class='glyphicon glyphicon-star-empty'aria-hidden='true'></span> " + msg.Name);
+                }
+                else {
+                    alert(msg.Error)
+                }
+            }
+        });
+    }
+
+</script>

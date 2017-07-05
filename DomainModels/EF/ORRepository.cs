@@ -67,5 +67,15 @@ namespace DomainModels.EF
         {
             return context.OperationResult.FirstOrDefault(u => u.InputData == name);
         }
+
+        public IEnumerable<OperationResult> GetByUser(User user)
+        {
+            if (user == null) return new OperationResult[0];
+            return context.OperationResult.Where(o => o.AuthorId == user.Id).ToList();
+        }
+        public OperationResult GetRecord(long userId, long operId, string inputData)
+        {
+            return context.OperationResult.FirstOrDefault(o => o.AuthorId == userId && o.InputData == inputData && o.OperationId == operId);
+        }
     }
 }

@@ -20,6 +20,8 @@ namespace DomainModels.Models
         public double Result { get; set; }
         public int ExecutionTime { get; set; }
         public DateTime? ExecutionDate { get; set; }
+        [NotMapped]
+        public virtual bool IsLiked { get; set; }
 
     }
 }

@@ -24,6 +24,7 @@ namespace WebCalc1
             builder.RegisterType<DomainModels.EF.UserRepository>().As<IUserRepository>();
             builder.RegisterType<ORRepository>().As<IORepository>();
             builder.RegisterType<OperationRepository>().As<IOperationRepository>();
+            builder.RegisterType<LikeRepository>().As<ILikeRepository>();
 
             // создаем новый контейнер с теми зависимостями, которые определены выше
             var container = builder.Build();
