@@ -10,10 +10,10 @@ namespace DomainModels.Models
     [Table("Operation")]
     public class Operation
     {
-        public long Id { get; set; }
-        public Guid Uid { get; set; }
-        public string Name { get; set; }
-        public string FullName { get; set; }
+        public virtual long Id { get; set; }
+        public virtual Guid Uid { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string FullName { get; set; }
         public virtual ICollection<OperationResult> OperationResult { get; set; } 
     }
 }

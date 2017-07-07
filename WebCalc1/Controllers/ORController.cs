@@ -20,12 +20,12 @@ namespace WebCalc1.Controllers
             var result = ORRepository.GetByUser(currUser);
 
             var likes = LikeRepository.GetAll()
-                .Where(u => u.UsersId == currUser.Id)
-                .Select(it => it.ResultId);
+                .Where(u => u.Users == currUser)
+                .Select(it => it.Result);
 
             foreach(var r in result)
             {
-                r.IsLiked = likes.Contains(r.Id);
+                r.IsLiked = likes.Contains(r);
             }
 
             return View(result);
@@ -43,7 +43,7 @@ namespace WebCalc1.Controllers
             var currUser = UserRepository.GetByName(User.Identity.Name);
 
             var like = LikeRepository.GetAll().
-                FirstOrDefault(i => i.UsersId == currUser.Id && i.ResultId == id);
+                FirstOrDefault(i => i.Users == currUser && i.Id == id);
             if (like != null)
             {
                 LikeRepository.Delete(like);
@@ -51,8 +51,8 @@ namespace WebCalc1.Controllers
             }
 
             like = LikeRepository.Create();
-            like.UsersId = currUser.Id;
-            like.ResultId = result.Id;
+            like.Users = currUser;
+            like.Result = result;
             LikeRepository.Update(like);
 
             //ViewBag.Message = string.Format("Пользователь\"{0}\" лайкнул результат операции \"{1}\"", currUser.FIO, result.Operation.Name );

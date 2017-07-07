@@ -40,7 +40,7 @@ namespace WebCalc1.Controllers
             {
                 
                 //operation.Name 
-                var OperationId = OperationRepository.GetByName(operation.Name).Id;
+                var OperationId = OperationRepository.GetByName(operation.Name);
                 var inputData = string.Join(";", model.Arguments);
 
                 var oldResult = ORRepository.GetOldResult(OperationId, inputData);
@@ -68,10 +68,10 @@ namespace WebCalc1.Controllers
                     var rec = ORRepository.Create();
                     //ХАК №1
                     var currUser = UserRepository.GetByName(User.Identity.Name);
-                    rec.AuthorId = currUser.Id;
+                    rec.Author = currUser;
                     //rec.AuthorId = 5;
                     //ХАК
-                    rec.OperationId = OperationId;
+                    rec.Operation = OperationId;
 
                     rec.ExecutionDate = DateTime.Now;
                     rec.ExecutionTime = new Random().Next(0, 100);

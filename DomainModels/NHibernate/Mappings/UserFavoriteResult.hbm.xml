@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DomainModels"
+                   namespace="DomainModels.Models">
+
+  <class name="UserFavoriteResult">
+    <id name="Id">
+      <generator class="native" />
+    </id>
+    
+    
+    <many-to-one name="Users" class="User" column="UsersId" lazy="false" />
+    <many-to-one name="Result" class="OperationResult" column="ResultId" lazy="false" />
+
+
+  </class>
+
+</hibernate-mapping>

@@ -12,16 +12,16 @@ namespace DomainModels.Models
     {
         public User()
         {
-            OperationResult = new List<OperationResult>();
-            UserFavoriteResult = new List<UserFavoriteResult>();
+            //OperationResult = new List<OperationResult>();
+            //UserFavoriteResult = new List<UserFavoriteResult>();
         }
 
-        public long Id { get; set; }
-        public Guid Uid { get; set; }
-        public string Login { get; set; }
-        public string FIO { get; set; }
-        public string Password { get; set; }
-        public bool IsDeleted { get; set; }
+        public virtual long Id { get; set; }
+        public virtual Guid Uid { get; set; }
+        public virtual string Login { get; set; }
+        public virtual string FIO { get; set; }
+        public virtual string Password { get; set; }
+        public virtual bool IsDeleted { get; set; }
         public virtual ICollection<OperationResult> OperationResult { get; set; }
         public virtual ICollection<UserFavoriteResult> UserFavoriteResult { get; set; }
     }

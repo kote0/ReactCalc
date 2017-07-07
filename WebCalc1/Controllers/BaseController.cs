@@ -16,12 +16,12 @@ namespace WebCalc1.Controllers
         protected ILikeRepository LikeRepository { get; set; }
 
 
-        public BaseController(IORepository orrepository,
+        public BaseController(IORepository ORRepository,
             IUserRepository UserRepository,
             IOperationRepository OperationRepository,
             ILikeRepository LikeRepository)
         {
-            ORRepository = orrepository;
+            this.ORRepository = ORRepository;
             this.UserRepository = UserRepository;
             this.OperationRepository = OperationRepository;
             this.LikeRepository = LikeRepository;

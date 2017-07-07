@@ -53,6 +53,14 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.1.1.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -73,14 +81,17 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserFavoriteResult.cs" />
     <Compile Include="EF\UserRepository.cs" />
+    <Compile Include="NHibernate\NHibernateHelper.cs" />
+    <Compile Include="NHibernate\LikeRepository.cs" />
+    <Compile Include="NHibernate\OperationRepository.cs" />
+    <Compile Include="NHibernate\ORRepository.cs" />
+    <Compile Include="NHibernate\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\EntityRepository.cs" />
     <Compile Include="Repository\IEntityRepository.cs" />
     <Compile Include="Repository\ILikeRepository.cs" />
     <Compile Include="Repository\IOperationRepository.cs" />
-    <Compile Include="Repository\IOperationResultRepository.cs" />
     <Compile Include="Repository\IORepository.cs" />
-    <Compile Include="Repository\IUserFavoriteRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -92,6 +103,17 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>reactCalc.mdf</DependentUpon>
     </Content>
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="NHibernate\Mappings\UserFavoriteResult.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NHibernate\Mappings\OperationResult.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NHibernate\Mappings\Operation.hbm.xml" />
+    <EmbeddedResource Include="NHibernate\Mappings\User.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">

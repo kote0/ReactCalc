@@ -9,8 +9,8 @@ namespace DomainModels.Repository
 {
     public interface IORepository : IEntityRepository<OperationResult>
     {
-        double GetOldResult(long operationId, string InputData);
+        double GetOldResult(Operation operationId, string InputData);
         IEnumerable<OperationResult> GetByUser(User user);
-        OperationResult GetRecord(long userId, long operId, string inputData);
+        OperationResult GetRecord(long userId, Operation operId, string inputData);
     }
 }

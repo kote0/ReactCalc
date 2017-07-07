@@ -77,5 +77,15 @@ namespace DomainModels.EF
         {
             return context.OperationResult.FirstOrDefault(o => o.AuthorId == userId && o.InputData == inputData && o.OperationId == operId);
         }
+
+        public double GetOldResult(Operation operationId, string InputData)
+        {
+            throw new NotImplementedException();
+        }
+
+        public OperationResult GetRecord(long userId, Operation operId, string inputData)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

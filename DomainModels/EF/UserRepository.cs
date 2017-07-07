@@ -56,5 +56,10 @@ namespace DomainModels.EF
         {
             return context.Users.FirstOrDefault(u => u.Login == name);
         }
+
+        public User Create1()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

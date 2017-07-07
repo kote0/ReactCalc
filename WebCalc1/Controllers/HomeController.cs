@@ -13,9 +13,9 @@ namespace WebCalc1.Controllers
 
 
         private IUserRepository UserRepository { get; set; }
-        public HomeController()
+        public HomeController(IUserRepository UserRepository)
         {
-            UserRepository = new DomainModels.EF.UserRepository();
+            this.UserRepository = UserRepository;
         }
 
 

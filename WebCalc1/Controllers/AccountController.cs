@@ -11,9 +11,9 @@ namespace WebCalc1.Controllers
 {
     public class AccountController : Controller
     {
-        private DomainModels.Repository.IUserRepository UserRepository { get; set; }
+        private IUserRepository UserRepository { get; set; }
 
-        public AccountController(DomainModels.Repository.IUserRepository UserRepository)
+        public AccountController(IUserRepository UserRepository)
         {
             this.UserRepository = UserRepository;
         }
